@@ -14,6 +14,8 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 ## 训练框架
 
+实际上，文章最大体的方向是很好理解的，就是利用有限个拍摄角度得到的图像，通过深度学习来拟合出任意拍摄角度的图像。听起来好像很简单，但事实上如果想仅仅使用个位数维度的拍摄角度来拟合一个成十万百万维的图像，显然是不现实的。文章采用了立体空间中相机到像素的射线上的点来拟合该像素的rgb值的方法，有效的提升了输入维，减少了输出维。那么具体是怎么实现的呢，下面来拆解一下NeRF的训练框架。
+
 ### step1 数据集获取
 
 作为练习目的，download_example_data.sh文件中提供了fern数据集以及lego数据集的下载路径，更多的数据集可以在[link](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1)里下载。也可以自发的通过相机拍摄一组照片，并通过COLMAP制作属于自己的数据集(COLMAP可以根据你给出的照片集估计出训练必须的poses_bounds.npy)
