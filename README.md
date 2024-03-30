@@ -20,9 +20,9 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 作为练习目的，download_example_data.sh文件中提供了fern数据集以及lego数据集的下载路径，更多的数据集可以在[link](https://drive.google.com/drive/folders/128yBriW1IG_3NJ5Rp7APSTZsJqdJdfc1)里下载。也可以自发的通过相机拍摄一组照片，并通过COLMAP制作属于自己的数据集(COLMAP可以根据你给出的照片集估计出训练必须的poses_bounds.npy)
 
-### step2 load_llff_data()
+### step2 数据加载
 
-load_llff_data()首先将给定的图片按照焦距进行放缩，同时将poses_bounds.npy中每张图片对应的17个参数分别转换成位姿矩阵和深度范围。之后根据已有相机位姿的平均值确立一个世界中心，并把所有的相机位姿按世界坐标重新标记。然后选择使用球面化或者螺旋化位姿，生成一个位姿序列，这些序列覆盖角度比原始序列全，可以被用作模型测试。
+定义了一个load_llff_data()方法，首先将给定的图片按照焦距进行放缩，同时将poses_bounds.npy中每张图片对应的17个参数分别转换成位姿矩阵和深度范围。之后根据已有相机位姿的平均值确立一个世界中心，并把所有的相机位姿按世界坐标重新标记。然后选择使用球面化或者螺旋化位姿，生成一个位姿序列，这些序列覆盖角度比原始序列全，可以被用作模型测试。
 
 ### step3 训练网络
 
