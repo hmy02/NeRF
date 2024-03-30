@@ -42,7 +42,7 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 全像素法的缺陷: 输入的光度图经过特征提取器得到每个图像的特征信息后用最大池化层融合得到特征图，通过这样的方法获得图像内部强度变化。该方法对每一个输入图像都得到一张特征图，这样会保留原来图像内部空间域信息，缺点就是不能兼顾多幅图像间的光照变化，而且卷积层用多了会导致梯度消失，最后的结果也会有所下降。
 
-文章说结合了逐像素法和全像素法，感觉无非就是先用GNN来了个逐像素法保留空间特征，再给这些输出按原来的图片拼回去，再来一CNN，就结束了。
+文章说结合了逐像素法和全像素法，感觉就是先用GNN来了个逐像素法保留空间特征，再给这些输出按原来的图片拼回去，再来一CNN，就结束了。
 
 ### Leveraging Spatial and Photometric Context for Calibrated Non-Lambertian Photometric Stereo
 
