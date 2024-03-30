@@ -34,9 +34,28 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 现在我们已经拥有了一个很好的模型，在测试阶段，固定某一拍摄点位，通过输入相机位姿，图像长宽，最近端最远端等参数，进而生成相机到全部像素点的射线，并取点送入网络，通过体素渲染预测该像素点rgb值，即可利用全部像素点拼成一张该拍摄点位'拍摄'得到的照片。
 
-## 一些近期PhotometricStereo的工作中idea的粗略汇总
+## 一些PhotometricStereo的工作中idea的粗略汇总
+
+### GPS-Net: Graph-based Photometric Stereo Network
+
+逐像素法的缺陷: 逐像素方法把每一个像素观察到的值投影到了一个固定为W的观测图，通过观测图探索图像之间的强度变化，但这样的缺点就是 W的大小设置多少合适，设置大了，有效数据只能占观测图的一部分，设置小了，观测图的分辨率就会降低。这种方法忽视了图像内空间域特征，观测图被W限制，要么选择分辨率，要么选择输入图像的密度，所以当输入图像的数量从少到多的时候该方法的性能就会有所下降。
+
+全像素法的缺陷: 输入的光度图经过特征提取器得到每个图像的特征信息后用最大池化层融合得到特征图，通过这样的方法获得图像内部强度变化。该方法对每一个输入图像都得到一张特征图，这样会保留原来图像内部空间域信息，缺点就是不能兼顾多幅图像间的光照变化，而且卷积层用多了会导致梯度消失，最后的结果也会有所下降。
+
+文章说结合了逐像素法和全像素法，感觉无非就是先用GNN来了个逐像素法保留空间特征，再给这些输出按原来的图片拼回去，再来一CNN，就结束了。
 
 ### Leveraging Spatial and Photometric Context for Calibrated Non-Lambertian Photometric Stereo
+
+不同光照方向上的某个点会呈现出不同的像素值，将这些像素值按照光照方向拼接起来得到一个像素矩阵，选取物体上小范围内若干个这样的像素矩阵组成的集合作为输入，通过CNN拟合一个热图，热图最热的地方作垂线交于半球体，交点与这个小范围的中心相连即可得到这个小范围的表面法线方向。
+
+### DiLiGenT-Π: Photometric Stereo for Planar Surfaces with Rich Details – Benchmark Dataset and Beyond
+
+提供了一个专注近平面细节的数据集，可以应用于模型微调，使模型恢复表面细节的能力得到提升。
+
+### SR-PSN: Estimating High-resolution Surface Normals via Low-resolution Photometric Stereo Images
+
+
+
 
 
 
