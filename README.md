@@ -38,6 +38,8 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 ### Scalable, Detailed, and Mask-Free Universal Photometric Stereo*
 
+### SR-PSN: Estimating High-resolution Surface Normals via Low-resolution Photometric Stereo Images*
+
 ### GPS-Net: Graph-based Photometric Stereo Network
 
 逐像素法: 逐像素法在处理光度立体时，将每个像素观察到的值投影到一个固定大小的观测图中，然后探索图像之间的强度变化。然而，这种方法的缺点在于，观测图的大小需要合适地设置。如果设置得太大，有效数据只占观测图的一部分，导致信息浪费；而设置得太小，则观测图的分辨率会降低。这种方法忽略了图像内部的空间域特征，并且受到了观测图大小的限制，要么选择分辨率，要么选择输入图像的密度，导致当输入图像数量增加时性能下降。
@@ -54,7 +56,7 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 提供了一个专注近平面细节的数据集，可以应用于模型微调，使模型恢复表面细节的能力得到提升。
 
-### SR-PSN: Estimating High-resolution Surface Normals via Low-resolution Photometric Stereo Images*
+
 
 
 
