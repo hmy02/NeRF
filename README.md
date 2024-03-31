@@ -54,7 +54,7 @@ After training for 200k iterations (~8 hours on a single 2080 Ti), you can find 
 
 ### DiLiGenT-Π: Photometric Stereo for Planar Surfaces with Rich Details – Benchmark Dataset and Beyond
 
-提供了一个专注近平面细节的数据集，可以应用于模型微调，使模型恢复表面细节的能力得到提升。
+提供了一个专注近平面细节的数据集，可以应用于模型微调，使模型恢复表面细节的能力得到提升
 
 
 
